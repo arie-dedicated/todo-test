@@ -1,0 +1,12 @@
+query Data($id: ID!) {
+  records(
+    per_page: 30
+    filter: {table: {value: "item"},
+      properties: {name: "list_id", value: $id}}
+  ) {
+    results {
+      id
+     properties
+    }
+  }
+}

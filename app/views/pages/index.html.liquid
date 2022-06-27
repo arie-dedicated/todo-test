@@ -1,10 +1,22 @@
-<h1>Hello World</h1>
-<p>Ipsum sunt labore incididunt non est nostrud excepteur laborum sunt excepteur. Aute eiusmod eiusmod aliqua proident nostrud culpa reprehenderit ullamco do ex. Dolore consequat laborum labore ut non qui qui dolor occaecat officia.
+{% graphql lists = 'index' | fetch: 'records' | fetch: 'results' %}
 
-Minim non amet consectetur enim reprehenderit elit qui do sunt labore do mollit aliquip aliqua. Pariatur sunt pariatur eiusmod labore. Sunt in pariatur Lorem nulla nulla nisi aliqua ipsum mollit. Sint ipsum magna officia esse non dolore labore. Eu nisi ut ad fugiat non reprehenderit dolore. Reprehenderit eu nulla cillum in ipsum veniam mollit fugiat quis id. Excepteur officia cupidatat exercitation eiusmod fugiat nostrud velit non dolore consequat consectetur.
+{% if lists.size > 0 %}
+  <ol>
+    {% for list in lists %}
+      <li>
+        <a href="/list/show/{{ list.id }}">{{ list.title }}</a>
+      </li>
+    {% endfor %}
+  </ol>
+{% else %}
+  <p>There are no lists yet. You can create the first one!</p>
+{% endif %}
+<form
+  action="/list/create"
+  method="POST"
+  x-show="open === true">
 
-Enim ad amet aliquip adipisicing excepteur est ea ea. Cillum velit proident consequat esse cupidatat cillum. In culpa magna do incididunt fugiat incididunt.
+  <input type="text" name="title" placeholder="List title" required>
 
-Ea officia voluptate irure aliqua id pariatur elit. Incididunt minim consectetur nostrud est cupidatat ullamco labore qui eu. Amet aliqua consectetur exercitation nostrud.
-
-Duis dolor ipsum non nulla id Lorem mollit magna eu nulla sint pariatur. Ea ullamco voluptate dolore laboris dolore voluptate ea adipisicing magna qui id culpa. Tempor quis exercitation in proident nostrud irure pariatur dolore velit consectetur culpa. Id fugiat nulla ut occaecat. Amet enim anim quis labore ipsum.</p>
+  <button class="button-primary">Create</button>
+</form>

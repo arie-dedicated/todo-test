@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  {% include 'layout/head' %}
+<title>TODO</title>
+<link rel="stylesheet" href="{{ 'styles/app.css' | asset_url }}">
+<style> form, input { margin: 0; } </style>
+<script src="{{ 'js/app.js' | asset_url }}" defer></script>
 </head>
 
-<body class="antialiased font-sans leading-relaxed">
+<body>
+
+<div class="container">
+  <p class="mt-8 button">
+    🏠 <a href="/" class="text-2xl">TODO list <small class="text-gray-500"></small></a>
+  </p>
+
   {{ content_for_layout }}
-  {% include 'layout/scripts' %}
+</div>
 </body>
 </html>

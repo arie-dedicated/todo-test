@@ -1,0 +1,17 @@
+---
+method: post
+---
+{% liquid
+  assign id = context.params.slug3
+  assign title = context.params.title
+  graphql result = 'list/update', id: id, title: title
+  assign list = result | fetch: "record_update"
+%}
+
+{% if list.id %}
+<script>window.location.href = '/list/show/{{ id }}';</script>
+{% else %}
+Something went wrong :(
+<br>
+{{ result.errors }}
+{% endif %}

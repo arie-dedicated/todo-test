@@ -5,8 +5,8 @@ query Data($id: ID!) {
       properties: {name: "list_id", value: $id}}
   ) {
     results {
-      id
-     properties
+    id
+    properties
     }
   }
 }

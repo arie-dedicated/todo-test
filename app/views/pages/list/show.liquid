@@ -18,11 +18,16 @@
 </form>
 <hr>
 <h3 class="mb-0 mr-10">Task List</h2>
+
 {% if items.size > 0 %}
+<form action="/item/delete" method="POST">
+    <input type="hidden" name="list_id" value="{{id}}" />
     <ol>
     {% for item in items %}
-    <li>{{ item.properties.content }}</li>
+    <li><input type="checkbox" name="id[]" value="{{item.id}}"> {{ item.properties.content }} </li>
     {% endfor %}
+    <button type="submit">Delete</button>
+</form>
 </ol>
 {% else %}
 - Task is empty -
